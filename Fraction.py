@@ -1,9 +1,12 @@
 class Fraction:
 
     def __init__ (self, top, bot):
-        common = self.gcd(top, bot)
-        self.num = top // common
-        self.den = bot // common
+        try:
+            common = self.gcd(top, bot)
+            self.num = top // common
+            self.den = bot // common
+        except Exception as error:
+            raise error
 
     @staticmethod
     def gcd (num, den):
@@ -21,17 +24,35 @@ class Fraction:
 
         return firstnum == secondnum
 
+    def __ne__ (self, other):
+        firstnum = self.num * other.den
+        secondnum = other.num * self.den
+
+        return firstnum != secondnum
+
     def __gt__ (self, other):
         firstnum = self.num * other.den
         secondnum = other.num * self.den
 
         return firstnum > secondnum
 
+    def __ge__ (self, other):
+        firstnum = self.num * other.den
+        secondnum = other.num * self.den
+
+        return firstnum >= secondnum
+
     def __lt__ (self, other):
         firstnum = self.num * other.den
         secondnum = other.num * self.den
 
         return firstnum < secondnum
+
+    def __le__ (self, other):
+        firstnum = self.num * other.den
+        secondnum = other.num * self.den
+
+        return firstnum <= secondnum
 
     def __add__ (self, other):
         newnum = self.num * other.den + self.den * other.num
@@ -68,4 +89,3 @@ class Fraction:
 
     def show (self):
         print(self.num, '/', self.den)
-
