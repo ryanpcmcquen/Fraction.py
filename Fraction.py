@@ -72,7 +72,7 @@ class Fraction:
         newden = self.den * other.den
 
         return Fraction(newnum, newden)
-
+    
     def __mul__ (self, other):
         newnum = self.num * other.num
         newden = self.den * other.den
@@ -87,6 +87,9 @@ class Fraction:
 
     def __str__ (self):
         return str(self.num) + '/' + str(self.den)
+
+    def __repr__ (self):
+        return type(self).__name__ + '(' + str(self.num) + ', ' + str(self.den) + ')'
 
     def getNum (self):
         return self.num
