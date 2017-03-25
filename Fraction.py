@@ -60,12 +60,19 @@ class Fraction:
 
         return Fraction(newnum, newden)
 
+    def __radd__ (self, other):
+        return other.__add__(self)
+
+    def __iadd__ (self, other):
+        self = self.__add__(other)
+        return self
+
     def __sub__ (self, other):
         newnum = self.num * other.den - self.den * other.num
         newden = self.den * other.den
 
         return Fraction(newnum, newden)
-    
+
     def __mul__ (self, other):
         newnum = self.num * other.num
         newden = self.den * other.den
@@ -89,3 +96,4 @@ class Fraction:
 
     def show (self):
         print(self.num, '/', self.den)
+
